@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Vuelos</string>
+    <string name="fly_search">BUSCADOR DE VUELOS</string>
+    <string name="conexion">CONEXION</string>
+    <string name="search">BUSCAR</string>
+    <string name="name">Nombre</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar sesion</string>
+    <string name="itinerarios">ITINERARIO</string>
+    <string name="title">¿Seguro que quieres reservar este vuelo?</string>
+    <string name="reserva">Reservar</string>
+    <string name="reservas">Reservas</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="modificar">¿What do u want to do with this reservation?</string>
+    <string name="mod">Modify</string>
+    <string name="cancel">Cancel</string>
+</resources>

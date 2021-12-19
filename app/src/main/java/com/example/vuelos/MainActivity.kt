@@ -5,39 +5,32 @@ import android.graphics.Color.rgb
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import com.example.vuelos.Itinerarios.Companion.itinerates
-import com.example.vuelos.Usuarios.Companion.users
-import com.example.vuelos.Vuelos.Companion.flights
-import java.time.LocalDate
+import androidx.appcompat.app.AlertDialog
+import clases.Usuarios.Companion.users
+import com.example.vuelos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), Datos {
+
+    private lateinit var binding : ActivityMainBinding
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //VALORES DEL PROGRAMA
         datos()
 
         //ESTABLECER COLORES A LA INTERFAZ DE USUARIO E INICIALIZAR VARIABLES
-        val background = findViewById<View>(R.id.fondo)
-        val login = findViewById<View>(R.id.sesion) as Button
-        val name = findViewById<View>(R.id.name) as EditText
-        val password = findViewById<View>(R.id.password) as EditText
-
         var acces = false
         var lastname = ""
 
-        background.setBackgroundResource(R.drawable.fondo)
-        login.setBackgroundColor(rgb (25,25,112))
-
         //ACCIÓN BOTON INICIAR SESION
-        login.setOnClickListener {
+        binding.sesion.setOnClickListener {
             for(i in users){
-                acces = i.name == name.text.toString() && i.password == password.text.toString()
+                acces = i.name == binding.name.text.toString().replace(" ", "") && i.password == binding.password.text.toString()
                 lastname = i.lastname
                 if(acces){
                     break
@@ -45,12 +38,29 @@ class MainActivity : AppCompatActivity(), Datos {
             }
 
             if(acces){
-                val init = Intent(this, BuscadorVuelos::class.java).apply {
-                    putExtra("name",name.text.toString())
+                val init = Intent(this, AnimacionInicio::class.java).apply {
+                    putExtra("name",binding.name.text.toString().replace(" ", ""))
                     putExtra("lastname", lastname)
                 }
                 startActivity(init)
-            }else Toast.makeText(this, "Nombre o contraseña incorrecta", Toast.LENGTH_SHORT).show()
+                finish()
+            }else {
+                val alertDialog: AlertDialog = this.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.setMessage(R.string.eIncorrect)
+                    builder.apply {
+                        setPositiveButton(R.string.ok) { dialog, id -> dialog.dismiss() }
+                    }
+                    builder.create()
+                    builder.show()
+                }
+            }
+        }
+
+        //Acción botón register
+        binding.register.setOnClickListener{
+            val register = Intent(this, Register::class.java)
+            startActivity(register)
         }
     }
 }

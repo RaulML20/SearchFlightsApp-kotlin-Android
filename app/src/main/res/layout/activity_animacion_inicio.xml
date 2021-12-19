@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/motionL"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cielo"
+    app:layoutDescription="@xml/activity_animacion_inicio_scene"
+    tools:context=".AnimacionInicio">
+
+    <ImageView
+        android:id="@+id/airplane"
+        android:layout_width="200dp"
+        android:layout_height="260dp"
+        android:src="@drawable/airplane"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="531dp" />
+
+    <ImageView
+        android:id="@+id/humo"
+        android:layout_width="30dp"
+        android:layout_height="100dp"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="639dp"
+        tools:src="@drawable/airplane" />
+
+    <ImageView
+        android:id="@+id/maleta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/maleta"
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="357dp" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

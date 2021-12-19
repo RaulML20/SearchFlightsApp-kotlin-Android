@@ -4,16 +4,36 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vuelos">
         <activity
-            android:name=".ListaReservas"
+            android:name=".AnimacionInicio"
+            android:exported="false" />
+        <activity
+            android:name=".AlarmReceiver"
+            android:exported="false" />
+        <activity
+            android:name=".GalleryR"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Gallery"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".CargaVuelos"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MapCityD"
+            android:exported="true" />
+        <activity
+            android:name=".MapCityO"
+            android:exported="true" />
+        <activity
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +42,29 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Register"
+            android:exported="true" />
+        <activity
+            android:name=".ListaReservas"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".BuscadorVuelos"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:label="Flight search"
+            android:theme="@style/BaseAppTheme" />
         <activity
             android:name=".SeleccionVuelos"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>
